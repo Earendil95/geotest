@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile
     image: geotest-app
-    command: > 
+    command: >
       bash -c "bin/docker-bundle.sh 
       && rm -f tmp/pids/server.pid 
       && RAILS_ENV=development bundle exec rails s -p 3000 -b '0.0.0.0'"
@@ -21,6 +21,16 @@ services:
     depends_on:
       - db
 
+  spec:
+    image: geotest-app
+    links:
+      - db
+    volumes:
+      - bundle_cache:/bundle
+      - .:/geotest
+    depends_on:
+      - db
+
   db:
     image: mdillon/postgis
     ports:
@@ -30,14 +40,6 @@ services:
       - POSTGRES_PASSWORD=geotest
     volumes:
       - pgdata:/var/lib/postgresql/data
-
-  spec:
-    image: geotest-app
-    links:
-      - db
-    volumes:
-      - bundle_cache:/bundle
-      - .:/geotest
 
 volumes:
   bundle_cache:

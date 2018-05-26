@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class BuildingRadiusQuery
-  RADIUS = 2000
+  RADIUS = 4000
 
   attr_reader :point
 
