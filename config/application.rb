@@ -26,5 +26,12 @@ module Geotest
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+    if Rails.env.development?
+      console do
+        require "pry"
+        Pry.config.editor = 'vim'
+        config.console = Pry
+      end
+    end
   end
 end
