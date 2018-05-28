@@ -8,9 +8,9 @@ RSpec.describe BuildingRadiusQuery do
       create :building, address: "Alexander Garden", longitude: 37.615439, latitude: 55.754065
     end
 
-    let(:radius) { nil }
-
     subject(:result) { described_class.new(37.617635, 55.755814).in_radius(radius) }
+
+    let(:radius) { nil }
 
     it "returns only 'close' points" do
       expect(result.count(:all)).to eq 2

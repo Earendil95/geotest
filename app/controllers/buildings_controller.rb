@@ -1,7 +1,4 @@
 class BuildingsController < ApplicationController
-  def index
-  end
-
   def search
     @buildings = BuildingRadiusQuery.new(*point_params).in_radius(params[:radius]&.to_f)
     render layout: false

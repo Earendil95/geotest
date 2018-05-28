@@ -26,9 +26,6 @@ RSpec.configure do |config|
   config.filter_run_when_matching :focus
   config.example_status_persistence_file_path = "spec/examples.txt"
   config.disable_monkey_patching!
-  if config.files_to_run.one?
-    config.default_formatter = "doc"
-  end
 
   # Print the 10 slowest examples and example groups at the
   # end of the spec run, to help surface which specs are running
