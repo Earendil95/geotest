@@ -9,23 +9,20 @@ class BuildingRadiusQuery
     @point = factory.point(point_lon.to_f, point_lat.to_f)
   end
 
-  def in_radius
+  def in_radius(radius = nil)
     Building.select(select_sql)
-            .where("ST_DWithin(coordinates, ?, ?)", point, RADIUS)
+            .where("ST_DWithin(coordinates, ?, ?)", point, radius || RADIUS)
             .order("distance ASC")
   end
 
   private
 
   def select_sql
-    <<-SQL
-      address, ST_AsText(coordinates) as coordinates,
-      #{distance} as distance
-    SQL
+    "address, coordinates, #{distance} as distance"
   end
 
   def distance
-    Arel.sql "ST_DistanceSphere(coordinates::geometry, #{sql_point})"
+    Arel.sql "round((ST_DistanceSphere(coordinates::geometry, #{sql_point}) / 1000)::numeric, 2)"
   end
 
   def sql_point

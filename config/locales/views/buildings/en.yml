@@ -1,0 +1,8 @@
+en:
+  buildings:
+    address: Address
+    distance: Distance to click
+    m: m
+    km: km
+    nothing: Nothing was found!
+    search_in_radius: "Search in radius of "

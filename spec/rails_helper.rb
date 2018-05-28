@@ -6,6 +6,7 @@ require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
 require "factory_bot_rails"
+require "test_prof/recipes/rspec/before_all"
 
 ActiveRecord::Migration.maintain_test_schema!
 

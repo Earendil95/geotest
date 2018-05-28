@@ -33,11 +33,14 @@ gem 'activerecord-postgis-adapter'
 gem "slim-rails"
 gem 'rails-controller-testing'
 
+gem 'faraday'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'rspec', '~> 3.7'
   gem 'rspec-rails', '~> 3.7'
+  gem 'test-prof'
   gem 'pry-byebug'
 end
 

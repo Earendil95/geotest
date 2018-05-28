@@ -1,0 +1,16 @@
+.container
+  .jumbotron
+    .row
+      .col-sm-1
+      .col-sm-10
+        .form-inline
+          .form-group
+            label for="radius" = I18n.t('buildings.search_in_radius')
+            input#radius.form-control value="4000"
+          .form-group
+            select#measure.form-control
+              option = I18n.t('buildings.m')
+              option = I18n.t('buildings.km')
+        #map
+        #results
+      .col-sm-1

@@ -1,0 +1,8 @@
+ru:
+  buildings:
+    address: Адрес
+    distance: Расстояние до щелчка
+    m: м
+    km: км
+    nothing: Ничего не найдено :(
+    search_in_radius: Поиск в радиусе

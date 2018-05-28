@@ -1,0 +1,15 @@
+- if @buildings.any?
+  table.table.table-striped
+    thead
+      tr
+        th = I18n.t('buildings.address')
+        th = I18n.t('buildings.distance')
+    tbody
+      - @buildings.each do |building|
+        tr
+          th
+            = building.address
+            .invisible = [building.latitude, building.longitude].join(",")
+          th = "#{building.distance} #{I18n.t('buildings.km')}"
+- else
+  .alert.alert-success = I18n.t('buildings.nothing')
